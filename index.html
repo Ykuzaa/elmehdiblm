@@ -3,382 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El-Mehdi BOULAALAM - E-Portfolio</title>
+    <title>El-Mehdi BOULAALAM - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        .card-hover {
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8); }
+        }
+        .animated-bg {
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="animated-bg">
     <!-- Sélecteur de langue -->
-    <div class="fixed top-0 right-0 mt-4 mr-4 z-50">
-        <button onclick="toggleLanguage()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+    <div class="fixed top-0 right-0 mt-6 mr-6 z-50">
+        <button onclick="toggleLanguage()" class="glass-effect text-white px-6 py-3 rounded-xl hover:bg-white hover:bg-opacity-20 transition-all duration-300 font-medium">
+            <i class="fas fa-globe mr-2"></i>
             <span id="langToggle">EN</span>
         </button>
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-lg z-40">
-        <div class="container mx-auto px-6 py-4">
+    <nav class="fixed w-full glass-effect z-40 py-4">
+        <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-gray-800">EB.</div>
+                <div class="text-3xl font-bold text-gradient">EB.</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#formation" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Formation" data-en="Education">Formation</a>
-                    <a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
-                    <a href="#competences" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#video" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Vidéo" data-en="Video">Vidéo</a>
-                    <a href="#Développement de Carrière" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Développement de Carrière" data-en="Career Development">Développement de Carrière</a>
-                    <a href="#Engagement Civil" class="text-gray-600 hover:text-blue-600 transition-colors" data-fr="Engagement Civil" data-en="Civil Engagement ">Engagement Civil</a>
-
-
-
+                    <a href="#accueil" class="text-gray-300 hover:text-white transition-colors font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
+                    <a href="#formation" class="text-gray-300 hover:text-white transition-colors font-medium" data-fr="Formation" data-en="Education">Formation</a>
+                    <a href="#projets" class="text-gray-300 hover:text-white transition-colors font-medium" data-fr="Projets" data-en="Projects">Projets</a>
+                    <a href="#competences" class="text-gray-300 hover:text-white transition-colors font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section avec Photo -->
-    <header class="pt-24 pb-12 md:pt-32 md:pb-24 bg-gradient-to-r from-blue-600 to-blue-800">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- Page de Garde - À propos de moi -->
+    <section id="accueil" class="page gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                 <div class="text-white">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">BOULAALAM ElMehdi</h1>
-                    <p class="text-xl mb-4" data-fr="Étudiant en Ingénierie Numérique à l'ENSEEIHT" data-en="Digital Engineering Student at ENSEEIHT">Étudiant en ingénierie numérique à l'ENSEEIHT</p>
-                    <p class="mb-8 text-blue-100" data-fr="Passionné par l'Informatique et le Développement" data-en="Passionate about Computer Science and development">Passionné par l'informatique et le développement</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="mailto:elmehdiboulaalam@gmail.com" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
-                            <i class="fas fa-envelope mr-2"></i>
+                    <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+                        El-Mehdi 
+                        <span class="text-gradient block">BOULAALAM</span>
+                    </h1>
+                    <div class="space-y-6 text-xl">
+                        <p class="text-blue-200" data-fr="Étudiant Ingénieur • ENSEEIHT/INSA" data-en="Engineering Student • ENSEEIHT/INSA">
+                            Étudiant Ingénieur • ENSEEIHT/INSA
+                        </p>
+                        <p class="text-gray-300 leading-relaxed" data-fr="Passionné par l'Intelligence Artificielle et la Data Science, je suis actuellement en formation d'ingénieur à l'ENSEEIHT avec une spécialisation en ModIA (Modélisation et Intelligence Artificielle). Mon parcours combine une formation rigoureuse en mathématiques appliquées et une expertise technique en développement." data-en="Passionate about Artificial Intelligence and Data Science, I am currently an engineering student at ENSEEIHT with a specialization in ModIA (Modeling and Artificial Intelligence). My journey combines rigorous training in applied mathematics and technical expertise in development.">
+                            Passionné par l'Intelligence Artificielle et la Data Science, je suis actuellement en formation d'ingénieur à l'ENSEEIHT avec une spécialisation en ModIA (Modélisation et Intelligence Artificielle). Mon parcours combine une formation rigoureuse en mathématiques appliquées et une expertise technique en développement.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed" data-fr="Mon objectif est de contribuer aux avancées technologiques dans le domaine de l'IA tout en développant des solutions innovantes pour résoudre des problèmes complexes." data-en="My goal is to contribute to technological advances in the field of AI while developing innovative solutions to solve complex problems.">
+                            Mon objectif est de contribuer aux avancées technologiques dans le domaine de l'IA tout en développant des solutions innovantes pour résoudre des problèmes complexes.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-6 mt-12">
+                        <a href="mailto:elmehdiboulaalam@gmail.com" class="glass-effect text-white px-8 py-4 rounded-xl hover:bg-white hover:bg-opacity-20 transition-all duration-300 font-semibold animate-pulse-glow">
+                            <i class="fas fa-envelope mr-3"></i>
                             <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/mehdiblm/" target="_blank" class="border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        <a href="https://www.linkedin.com/in/mehdiblm/" target="_blank" class="border-2 border-white border-opacity-30 text-white px-8 py-4 rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 font-semibold">
+                            <i class="fab fa-linkedin mr-3"></i>LinkedIn
                         </a>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-2xl">
-                <img src=" meee.png " alt="El-Mehdi BOULAALAM" class="w-full h-full object-cover" />               
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                        <div class="relative rounded-full overflow-hidden shadow-2xl w-80 h-80 md:w-96 md:h-96">
+                            <img src="images/meee.png" alt="El-Mehdi BOULAALAM" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
 
-    <!-- Formation Section -->
-    <section id="formation" class="py-16 bg-white">
+    <!-- Page Formation -->
+    <section id="formation" class="page py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Formation" data-en="Education">Formation</h2>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-600 hover:shadow-xl transition-shadow">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">ENSEEIHT TOULOUSE</h3>
-                            <p class="text-blue-600 font-semibold mt-1">2024 - 2027</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">En cours</span>
-                        </div>
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6" data-fr="Compétences Techniques" data-en="Technical Skills">Compétences Techniques</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto" data-fr="Arsenal technologique pour l'IA et la Data Science" data-en="Technical arsenal for AI and Data Science">
+                    Arsenal technologique pour l'IA et la Data Science
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programmation -->
+                <div class="card-hover rounded-2xl p-8 text-center">
+                    <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-2xl"></i>
                     </div>
-                    <p class="text-gray-700 mt-4" data-fr="Ingénierie numérique" data-en="Digital Engineering">Ingénierie numérique</p>
-                    
-                    <div class="mt-4 space-y-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Semestre 5</h4>
-                            <ul class="ml-4 mt-2 space-y-1 text-gray-700">
-                                <li>• Soft & Human Skills (English, Spanish, Sport, Careers and Management)</li>
-                                <li>• Intégration et applications - probabilités</li>
-                                <li>• Socle commun informatique</li>
-                                <li>• Analyse numérique et statistiques</li>
-                                <li>• Traitement du signal et automatique</li>
-                                <li>• Modélisation et Architecture</li>
-                            </ul>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-fr="Programmation" data-en="Programming">Programmation</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Python</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-14 h-2 bg-purple-500 rounded-full"></div>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Semestre 6</h4>
-                            <ul class="ml-4 mt-2 space-y-1 text-gray-700">
-                                <li>• Soft & Human Skills 2 (English, Spanish, Sport, Careers and Management)</li>
-                                <li>• Télécommunications</li>
-                                <li>• Réseaux</li>
-                                <li>• Calcul scientifique et analyse de données</li>
-                                <li>• Technologie objet Architecture et systèmes</li>
-                            </ul>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Java</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-12 h-2 bg-purple-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">SQL</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-13 h-2 bg-purple-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">JavaScript</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-10 h-2 bg-purple-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">C</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-11 h-2 bg-purple-500 rounded-full"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-600 hover:shadow-xl transition-shadow">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Lycée Mohamed VI D'Excellence de BENGUERIR</h3>
-                            <p class="text-blue-600 font-semibold mt-1">2022 - 2024</p>
+
+                <!-- Data Science -->
+                <div class="card-hover rounded-2xl p-8 text-center">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-fr="Data Science" data-en="Data Science">Data Science</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">NumPy</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-14 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Pandas</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-13 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Scikit-learn</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-12 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">TensorFlow</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-10 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Matplotlib</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-13 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 mt-4">MPSI puis MP ÉTOILE</p>
-                    <p class="text-gray-600 mt-2">Formation intensive en mathématiques, physique et informatique</p>
                 </div>
-                
-                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-600 hover:shadow-xl transition-shadow">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Lycée Moulay el Hassane</h3>
-                            <p class="text-blue-600 font-semibold mt-1">2021 - 2022</p>
+
+                <!-- Outils -->
+                <div class="card-hover rounded-2xl p-8 text-center">
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-fr="Outils" data-en="Tools">Outils</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Git</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-13 h-2 bg-green-500 rounded-full"></div>
+                            </div>
                         </div>
-                        <div class="text-right">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Mention Très Bien</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Jupyter</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-14 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">LaTeX</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-12 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Tableau</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-10 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Power BI</span>
+                            <div class="w-16 h-2 bg-gray-700 rounded-full">
+                                <div class="w-9 h-2 bg-green-500 rounded-full"></div>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 mt-4" data-fr="Baccalauréat science mathématique A - Option française" data-en="Scientific Baccalaureate in Mathematics A - French Option">Baccalauréat science mathématique A - Option française</p>
+                </div>
+
+                <!-- Langues -->
+                <div class="card-hover rounded-2xl p-8 text-center">
+                    <div class="bg-gradient-to-r from-orange-500 to-orange-600 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-fr="Langues" data-en="Languages">Langues</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300" data-fr="Arabe" data-en="Arabic">Arabe</span>
+                            <span class="text-orange-400 text-sm font-medium" data-fr="Natif" data-en="Native">Natif</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300" data-fr="Français" data-en="French">Français</span>
+                            <span class="text-orange-400 text-sm font-medium">C1</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300" data-fr="Anglais" data-en="English">Anglais</span>
+                            <span class="text-orange-400 text-sm font-medium" data-fr="Pro" data-en="Pro">Pro</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300" data-fr="Espagnol" data-en="Spanish">Espagnol</span>
+                            <span class="text-orange-400 text-sm font-medium" data-fr="Inter" data-en="Inter">Inter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills Section -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-white mb-12 text-center" data-fr="Qualités Personnelles" data-en="Personal Qualities">Qualités Personnelles</h3>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+                    <div class="glass-effect p-6 rounded-xl text-center">
+                        <i class="fas fa-lightbulb text-3xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-bold text-white mb-3" data-fr="Analytique & Créatif" data-en="Analytical & Creative">Analytique & Créatif</h4>
+                        <p class="text-gray-400 text-sm" data-fr="Capacité à résoudre des problèmes complexes avec des approches innovantes" data-en="Ability to solve complex problems with innovative approaches">Capacité à résoudre des problèmes complexes avec des approches innovantes</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-xl text-center">
+                        <i class="fas fa-users text-3xl text-blue-400 mb-4"></i>
+                        <h4 class="text-xl font-bold text-white mb-3" data-fr="Esprit d'Équipe" data-en="Team Spirit">Esprit d'Équipe</h4>
+                        <p class="text-gray-400 text-sm" data-fr="Collaboration efficace et communication claire dans des projets multidisciplinaires" data-en="Effective collaboration and clear communication in multidisciplinary projects">Collaboration efficace et communication claire dans des projets multidisciplinaires</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-xl text-center">
+                        <i class="fas fa-rocket text-3xl text-purple-400 mb-4"></i>
+                        <h4 class="text-xl font-bold text-white mb-3" data-fr="Initiative & Proactivité" data-en="Initiative & Proactivity">Initiative & Proactivité</h4>
+                        <p class="text-gray-400 text-sm" data-fr="Identification d'opportunités d'amélioration et mise en œuvre de solutions" data-en="Identifying improvement opportunities and implementing solutions">Identification d'opportunités d'amélioration et mise en œuvre de solutions</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Expérience et Projets Section -->
-    <section id="experience" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Expérience & Projets" data-en="Experience & Projects">Expérience & Projets</h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-users text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2" data-fr="Mentor - La Corde de Réussite" data-en="Mentor - La Corde de Réussite">Mentor - La Corde de Réussite</h3>
-                    <p class="text-blue-600 mb-4">2024 - Présent</p>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span data-fr="Accompagnement et orientation des collégiens et lycéens" data-en="Mentoring and guidance for middle and high school students">Accompagnement et orientation des collégiens et lycéens</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span data-fr="Animation d'ateliers de soutien scolaire" data-en="Conducting academic support workshops">Animation d'ateliers de soutien scolaire</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-project-diagram text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2" data-fr="Programme APT2C" data-en="APT2C Program">Programme APT2C</h3>
-                    <p class="text-blue-600 mb-4">Juin 2021</p>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span data-fr="Présentation du lycée mixte de Missour et ses activités" data-en="Presentation of Missour Mixed High School and its activities">Présentation du lycée mixte de Missour et ses activités</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span data-fr="Participation à la compétition des jeunes reporters pour l'environnement" data-en="Participation in the Young Environmental Reporters competition">Participation à la compétition des jeunes reporters pour l'environnement</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Compétences Section -->
-    <section id="competences" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Compétences" data-en="Skills">Compétences</h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-code text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Développement" data-en="Development">Développement</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>Python
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>SQL
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>Ada
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>JavaScript
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-desktop text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Bureautique" data-en="Office Tools">Bureautique</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>Microsoft Word
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>Microsoft Excel
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>Microsoft PowerPoint
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-language text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Langues" data-en="Languages">Langues</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-                            <span data-fr="Arabe (Langue Maternelle)" data-en="Arabic (Native)">Arabe (Langue Maternelle)</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-                            <span data-fr="Français (C1)" data-en="French (C1)">Français (C1)</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-                            <span data-fr="Anglais (Professionnel)" data-en="English (Professional)">Anglais (Professionnel)</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-        <!-- Mobilité Internationale Section -->
-<section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Mobilité Internationale" data-en="International Mobility">Mobilité Internationale</h2>
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Exploration du Maroc" data-en="Exploring Morocco">Exploration du Maroc</h3>
-                    <p class="text-gray-700">
-                        En tant que Marocain passionné par la découverte, j'ai parcouru le pays du nord au sud, m'imprégnant de sa riche diversité culturelle. Cette exploration m'a permis de découvrir les traditions uniques de chaque région et de comprendre la mosaïque culturelle qui fait la richesse de mon pays.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Expérience en France" data-en="Experience in France">Expérience en France</h3>
-                    <p class="text-gray-700">
-                        Mon parcours m'a conduit en France, où j'ai eu l'opportunité de visiter plusieurs villes, découvrant ainsi la culture française et enrichissant ma perspective internationale.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="Objectifs Futurs" data-en="Future Goals">Objectifs Futurs</h3>
-                    <p class="text-gray-700">
-                        Mon ambition est d'élargir mes horizons en visitant un maximum de pays européens, dans le but de développer une compréhension approfondie des différentes cultures et d'enrichir mon expérience internationale.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Section CV -->
-<section id="cv" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Curriculum Vitae" data-en="Resume">Curriculum Vitae</h2>
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            <!-- CV Français -->
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div class="text-blue-600 mb-4">
-                    <i class="fas fa-file-pdf text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="CV en Français" data-en="French Resume">CV en Français</h3>
-                <p class="text-gray-700 mb-6">Version détaillée de mon parcours académique et professionnel en français.</p>
-                <a href="CV_Fr.pdf" target="_blank" 
-                   class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                    <i class="fas fa-download mr-2"></i>
-                    <span data-fr="Télécharger" data-en="Download">Télécharger</span>
-                </a>
-            </div>
-
-            <!-- CV Anglais -->
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div class="text-blue-600 mb-4">
-                    <i class="fas fa-file-pdf text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4" data-fr="CV en Anglais" data-en="English Resume">CV en Anglais</h3>
-                <p class="text-gray-700 mb-6">English version of my academic and professional background.</p>
-                <a href="Cv_angls.pdf" target="_blank" 
-                   class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                    <i class="fas fa-download mr-2"></i>
-                    <span data-fr="Télécharger" data-en="Download">Télécharger</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Section Vidéo -->
-   <section id="video" class="py-16 bg-gray-50">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Ma Présentation Vidéo" data-en="My Video Presentation">Ma Présentation Vidéo</h2>
-    <div class="max-w-lg mx-auto"> <!-- Changé de max-w-4xl à max-w-lg pour réduire la largeur -->
-      <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-lg">
-        <video class="rounded-lg w-full h-full object-cover" controls>
-          <source src="videom.mp4" type="video/mp4">
-          Votre navigateur ne supporte pas la lecture de vidéos.
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Career Development Section -->
-
-
-
-    <section class="py-16 bg-gray-50">
- <div class="container mx-auto px-6">
-   <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Développement de Carrière" data-en="Career Development">Développement de Carrière</h2>
-   <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-     <div class="text-gray-700 space-y-4">
-       <p>En pleine réflexion sur mon avenir professionnel post-études, j'ai découvert un outil précieux : Millionroads. Cette plateforme en ligne se révèle particulièrement utile car elle permet de :</p>
-       <ul class="list-disc pl-6 space-y-2">
-         <li>Visualiser les différents parcours professionnels des anciens élèves de mon établissement</li>
-         <li>Analyser les trajectoires de carrière possibles</li>
-         <li>Établir facilement des connexions avec ces alumni</li>
-       </ul>
-     </div>
-   </div>
- </div>
-</section>
-
-    <!-- Engagement Civil Section -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" data-fr="Engagement Civil" data-en="Civil Engagement">Engagement Civil</h2>
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            <div class="flex items-center justify-center h-40 bg-gray-50 rounded-lg">
-                <p class="text-gray-600 italic" data-fr="Contenu à venir" data-en="Content coming soon">Contenu à venir</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
 
     <!-- Contact Section avec barre fixe en bas -->
-    <div class="fixed bottom-0 left-0 right-0 bg-blue-600 text-white py-4 shadow-lg z-50">
+    <div class="fixed bottom-0 left-0 right-0 glass-effect py-4 shadow-lg z-50">
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap justify-center items-center gap-8">
-                <a href="mailto:elmehdiboulaalam@gmail.com" class="flex items-center hover:text-blue-200 transition-colors">
-                    <i class="fas fa-envelope text-xl mr-2"></i>
+                <a href="mailto:elmehdiboulaalam@gmail.com" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-envelope text-xl mr-3"></i>
                     elmehdiboulaalam@gmail.com
                 </a>
-                <a href="tel:+33744279930" class="flex items-center hover:text-blue-200 transition-colors">
-                    <i class="fas fa-phone text-xl mr-2"></i>
+                <a href="tel:+33744279930" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-phone text-xl mr-3"></i>
                     +33 7 44 27 99 30
                 </a>
-                <a href="https://www.linkedin.com/in/mehdiblm/" target="_blank" class="flex items-center hover:text-blue-200 transition-colors">
-                    <i class="fab fa-linkedin text-xl mr-2"></i>LinkedIn
+                <a href="https://www.linkedin.com/in/mehdiblm/" target="_blank" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                    <i class="fab fa-linkedin text-xl mr-3"></i>LinkedIn
                 </a>
             </div>
         </div>
     </div>
 
-
     <!-- Footer avec padding pour compenser la barre de contact fixe -->
-    <footer class="bg-gray-900 text-white py-8 mb-16">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="py-12 mb-16 text-center">
+        <div class="container mx-auto px-6">
             <div class="text-gray-500 text-sm">
                 © 2024 El-Mehdi BOULAALAM. <span data-fr="Tous droits réservés" data-en="All rights reserved">Tous droits réservés</span>.
             </div>
@@ -401,8 +358,339 @@
             currentLang = newLang;
             langToggle.textContent = newLang === 'fr' ? 'EN' : 'FR';
         }
-        
+
+        // Smooth scrolling pour les liens de navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation d'apparition au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec animation
+        document.querySelectorAll('.card-hover').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
     </script>
 </body>
-</html>
- 
+</html>fr="Formation" data-en="Education">Formation</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto" data-fr="Mon parcours académique orienté vers l'excellence en ingénierie" data-en="My academic journey oriented towards excellence in engineering">
+                    Mon parcours académique orienté vers l'excellence en ingénierie
+                </p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto space-y-12">
+                <!-- Formation ModIA -->
+                <div class="card-hover rounded-2xl p-8 border-l-4 border-purple-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Formation ModIA - Double Diplôme</h3>
+                            <p class="text-xl text-purple-400 font-semibold">ENSEEIHT/INSA TOULOUSE</p>
+                            <p class="text-purple-300 mt-2">2025 - 2028</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="glass-effect px-4 py-2 rounded-full text-sm font-medium text-purple-300">À venir</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg mb-6" data-fr="Spécialisation en Intelligence Artificielle Hybride (formation par apprentissage)" data-en="Specialization in Hybrid Artificial Intelligence (apprenticeship program)">
+                        Spécialisation en Intelligence Artificielle Hybride (formation par apprentissage)
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 text-lg">
+                                <i class="fas fa-brain mr-2 text-purple-400"></i>
+                                Intelligence Artificielle
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-purple-400 mr-3 mt-1">•</span>Machine Learning Avancé</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3 mt-1">•</span>Deep Learning & Réseaux de Neurones</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3 mt-1">•</span>IA Hybride & Symbolique</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3 mt-1">•</span>Traitement du Langage Naturel</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 text-lg">
+                                <i class="fas fa-chart-bar mr-2 text-blue-400"></i>
+                                Data Science & Modélisation
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-blue-400 mr-3 mt-1">•</span>Big Data & Analytics</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3 mt-1">•</span>Modélisation Statistique</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3 mt-1">•</span>Visualisation de Données</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3 mt-1">•</span>Optimisation & Recherche Opérationnelle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formation générale ENSEEIHT -->
+                <div class="card-hover rounded-2xl p-8 border-l-4 border-blue-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Ingénierie Informatique Générale</h3>
+                            <p class="text-xl text-blue-400 font-semibold">ENSEEIHT TOULOUSE</p>
+                            <p class="text-blue-300 mt-2">2024 - 2025</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="glass-effect px-4 py-2 rounded-full text-sm font-medium text-blue-300">En cours</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg mb-6">
+                        Formation fondamentale en informatique et télécommunications
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="glass-effect p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-3">Informatique</h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>• Algorithmique Avancée</li>
+                                <li>• Programmation Orientée Objet</li>
+                                <li>• Structures de Données</li>
+                                <li>• Bases de Données</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-3">Mathématiques</h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>• Analyse Numérique</li>
+                                <li>• Probabilités & Statistiques</li>
+                                <li>• Calcul Scientifique</li>
+                                <li>• Optimisation</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-3">Systèmes</h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>• Réseaux & Télécoms</li>
+                                <li>• Systèmes d'Exploitation</li>
+                                <li>• Architecture des Systèmes</li>
+                                <li>• Sécurité Informatique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Classes Préparatoires -->
+                <div class="card-hover rounded-2xl p-8 border-l-4 border-green-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Classes Préparatoires</h3>
+                            <p class="text-xl text-green-400 font-semibold">Lycée Mohamed VI D'Excellence</p>
+                            <p class="text-green-300 mt-2">2022 - 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mt-4 text-lg">MPSI puis MP ÉTOILE - Formation intensive en mathématiques, physique et informatique</p>
+                    <div class="mt-6 grid md:grid-cols-3 gap-4">
+                        <div class="text-center p-4">
+                            <div class="text-2xl font-bold text-green-400">2 ans</div>
+                            <div class="text-sm text-gray-400">Formation intensive</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-2xl font-bold text-green-400">MP*</div>
+                            <div class="text-sm text-gray-400">Classe étoile</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-2xl font-bold text-green-400">Excellence</div>
+                            <div class="text-sm text-gray-400">Niveau national</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Baccalauréat -->
+                <div class="card-hover rounded-2xl p-8 border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Baccalauréat Science Mathématique A</h3>
+                            <p class="text-xl text-yellow-400 font-semibold">Lycée Moulay el Hassane</p>
+                            <p class="text-yellow-300 mt-2">2021 - 2022</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="bg-green-500 bg-opacity-20 border border-green-500 px-4 py-2 rounded-full text-sm font-medium text-green-300">Mention Très Bien</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mt-4" data-fr="Option française - Solides bases scientifiques" data-en="French Option - Strong scientific foundation">Option française - Solides bases scientifiques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Projets -->
+    <section id="projets" class="page py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6" data-fr="Projets Académiques" data-en="Academic Projects">Projets Académiques</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto" data-fr="Mes réalisations techniques en intelligence artificielle et data science" data-en="My technical achievements in artificial intelligence and data science">
+                    Mes réalisations techniques en intelligence artificielle et data science
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto space-y-12">
+                
+                <!-- Projet 1: Détection d'Anomalies -->
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="flex items-start mb-8">
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-4 rounded-xl mr-6">
+                            <i class="fas fa-ship text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-3">Détection d'Anomalies de Trajectoires de Navires</h3>
+                            <p class="text-purple-400 font-semibold text-lg">Projet Machine Learning & Data Science</p>
+                            <p class="text-gray-400 mt-2">Développement d'algorithmes de détection d'anomalies pour l'analyse de trajectoires maritimes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-purple-400"></i>
+                                Algorithmes ML
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Support Vector Machines (SVM)</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>One-Class SVM</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>DBSCAN Clustering</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Local Outlier Factor (LOF)</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-code mr-2 text-blue-400"></i>
+                                Technologies
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Python & Scikit-learn</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Pandas & NumPy</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Matplotlib & Seaborn</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Jupyter Notebooks</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-chart-line mr-2 text-green-400"></i>
+                                Résultats
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>ACP pour réduction dimensionnelle</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Matrices de confusion</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Métriques de performance</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Analyse comparative</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2: Calcul Scientifique -->
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="flex items-start mb-8">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-xl mr-6">
+                            <i class="fas fa-calculator text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-3">Méthodes d'Itération de Sous-Espaces</h3>
+                            <p class="text-blue-400 font-semibold text-lg">Projet Calcul Scientifique & Algèbre Linéaire</p>
+                            <p class="text-gray-400 mt-2">Implémentation d'algorithmes avancés pour le calcul de valeurs propres et compression d'images</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-project-diagram mr-2 text-blue-400"></i>
+                                Algorithmes Développés
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Méthodes itératives de puissance</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Algorithmes de déflation</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Approche par blocs optimisée</li>
+                                <li class="flex items-start"><span class="text-blue-400 mr-3">•</span>Calcul de valeurs propres dominantes</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-image mr-2 text-green-400"></i>
+                                Applications Pratiques
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Compression d'images par SVD</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Comparaisons de performances</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Optimisation algorithmique</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Analyse de complexité</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3: TIPE -->
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="flex items-start mb-8">
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 p-4 rounded-xl mr-6">
+                            <i class="fas fa-microchip text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-3">Modélisation Trajectoire avec Capteur IMU</h3>
+                            <p class="text-green-400 font-semibold text-lg">Projet TIPE - Systèmes Embarqués & Traitement de Signal</p>
+                            <p class="text-gray-400 mt-2">Conception d'un système de tracking en temps réel avec validation expérimentale</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-microchip mr-2 text-green-400"></i>
+                                Système Embarqué
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Capteur IMU haute fréquence (500Hz)</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Acquisition temps réel</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Filtrage et préprocessing</li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">•</span>Validation expérimentale</li>
+                            </ul>
+                        </div>
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-chart-area mr-2 text-purple-400"></i>
+                                Traitement & Analyse
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Python (NumPy, Pandas)</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Visualisations 3D interactives</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Modélisation mathématique</li>
+                                <li class="flex items-start"><span class="text-purple-400 mr-3">•</span>Analyse statistique des erreurs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences Section -->
+    <section id="competences" class="page py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6" data-
